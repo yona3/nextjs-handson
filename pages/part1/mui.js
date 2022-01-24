@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 const Mui = () => {
   return (
     <Container component="main" maxWidth="xs">
-      <Box component="form" noValidate>
+      <Box component="form" noValidate sx={{ marginTop: 8 }}>
         <TextField label="キーワードを入力してください" variant="standard" margin="normal" fullWidth />
         <Button variant="contained" margin="normal" fullWidth>
           検索
