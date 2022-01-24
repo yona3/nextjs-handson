@@ -17,8 +17,23 @@ const Store = () => {
           alignItems: 'center',
         }}
       >
-        <TextField label="キーワードを入力してください" variant="standard" margin="normal" fullWidth />
-        <Button variant="contained" margin="normal" fullWidth>
+        <TextField
+          label="キーワードを入力してください"
+          variant="standard"
+          margin="normal"
+          fullWidth
+          onChange={(event) => {
+            console.log('input change', event.target.value);
+          }}
+        />
+        <Button
+          variant="contained"
+          margin="normal"
+          fullWidth
+          onClick={() => {
+            console.log('button click');
+          }}
+        >
           検索
         </Button>
       </Box>
