@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 const Store = () => {
+  const [keyword, setKeyword] = React.useState('');
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -22,8 +24,9 @@ const Store = () => {
           variant="standard"
           margin="normal"
           fullWidth
+          value={keyword}
           onChange={(event) => {
-            console.log('input change', event.target.value);
+            setKeyword(event.target.value);
           }}
         />
         <Button
@@ -31,7 +34,7 @@ const Store = () => {
           margin="normal"
           fullWidth
           onClick={() => {
-            console.log('button click');
+            setKeyword('');
           }}
         >
           検索
