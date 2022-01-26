@@ -30,6 +30,13 @@ const Shops = ({ firstViewShops }) => {
     setShops(firstViewShops);
   }, [firstViewShops]);
 
+  const onSearchClick = async () => {
+    const data = await fetchData(keyword);
+
+    setShops(data);
+    setKeyword('');
+  };
+
   return (
     <Container component="main" maxWidth="md">
       <Box
@@ -58,7 +65,7 @@ const Shops = ({ firstViewShops }) => {
           margin="normal"
           fullWidth
           onClick={() => {
-            setKeyword('');
+            onSearchClick();
           }}
         >
           検索
