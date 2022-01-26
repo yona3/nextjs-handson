@@ -15,6 +15,8 @@ import Avatar from '@mui/material/Avatar';
 const fetchData = async (keyword) => {
   const { VERCEL_URL } = getConfig().publicRuntimeConfig;
 
+  console.log(getConfig().publicRuntimeConfig);
+
   const query = new URLSearchParams();
   if (keyword) query.set('keyword', keyword);
 
