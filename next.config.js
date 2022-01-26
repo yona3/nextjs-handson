@@ -8,6 +8,7 @@ module.exports = {
     API_HOST: VERCEL_URL ? `https://${VERCEL_URL}` : 'http://localhost:3000',
   },
   serverRuntimeConfig: {
+    ...process.env,
     HOTPEPPER_API_KEY,
   },
 };
