@@ -13,14 +13,12 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
 const fetchData = async (keyword) => {
-  const { VERCEL_URL } = getConfig().publicRuntimeConfig;
-
-  console.log(getConfig().publicRuntimeConfig);
+  const { API_HOST } = getConfig().publicRuntimeConfig;
 
   const query = new URLSearchParams();
   if (keyword) query.set('keyword', keyword);
 
-  const res = await fetch(`${VERCEL_URL}/api/shops?${query.toString()}`);
+  const res = await fetch(`${API_HOST}/api/shops?${query.toString()}`);
   return await res.json();
 };
 
