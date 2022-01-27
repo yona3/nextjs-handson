@@ -3,7 +3,6 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 
 const Store = () => {
   const [keyword, setKeyword] = React.useState('');
@@ -20,7 +19,6 @@ const Store = () => {
           alignItems: 'center',
         }}
       >
-        <Typography>検索ワード: {keyword}</Typography>
         <TextField
           label="キーワードを入力してください"
           variant="standard"
