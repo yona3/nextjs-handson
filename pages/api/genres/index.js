@@ -8,10 +8,24 @@ const getGenres = async () => {
   return genres;
 };
 
+const createGenre = async ({ code, name }) => {
+  const prisma = new PrismaClient();
+  const genre = await prisma.genres.create({
+    data: {
+      code,
+      name,
+    },
+  });
+
+  return genre;
+};
+
 const genres = async (req, res) => {
   switch (req.method) {
     case 'GET':
       return res.status(200).json(await getGenres());
+    case 'POST':
+      return res.status(201).json(await createGenre(req.body));
     default:
       return res.status(405).end();
   }
