@@ -12,11 +12,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
-const fetchData = async (keyword) => {
+const fetchShops = async (keyword, code) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
 
   const query = new URLSearchParams();
   if (keyword) query.set('keyword', keyword);
+  if (code) query.set('code', code);
 
   const host = process.browser ? '' : API_HOST;
   const res = await fetch(`${host}/api/shops?${query.toString()}`);
@@ -32,7 +33,7 @@ const Shops = ({ firstViewShops }) => {
   }, [firstViewShops]);
 
   const onSearchClick = async () => {
-    const data = await fetchData(keyword);
+    const data = await fetchShops(keyword);
 
     setShops(data);
     setKeyword('');
@@ -116,11 +117,11 @@ const Shops = ({ firstViewShops }) => {
 };
 
 export const getServerSideProps = async (req) => {
-  const data = await fetchData(req.query.keyword);
+  const shops = await fetchShops(req.query.keyword, req.query.code);
 
   return {
     props: {
-      firstViewShops: data,
+      firstViewShops: shops,
     },
   };
 };
