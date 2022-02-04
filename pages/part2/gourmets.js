@@ -47,7 +47,7 @@ const Shops = ({ firstViewShops, genres }) => {
   }, [firstViewShops]);
 
   const onSearchClick = async () => {
-    const data = await fetchShops(keyword);
+    const data = await fetchShops(keyword, code);
 
     setShops(data);
     setKeyword('');
