@@ -29,6 +29,15 @@ const updateGenre = async (id, { code, name }) => {
   return genre;
 };
 
+const deleteGenre = async (id) => {
+  const prisma = new PrismaClient();
+  await prisma.genres.delete({
+    where: {
+      id,
+    },
+  });
+};
+
 const genre = async (req, res) => {
   switch (req.method) {
     case 'GET':
@@ -37,6 +46,11 @@ const genre = async (req, res) => {
 
     case 'PATCH':
       return res.status(200).json(await updateGenre(parseInt(req.query.id, 10), req.body));
+      break;
+
+    case 'DELETE':
+      await deleteGenre(parseInt(req.query.id, 10));
+      return res.status(204).end();
       break;
 
     default:
