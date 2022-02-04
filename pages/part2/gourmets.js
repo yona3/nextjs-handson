@@ -24,7 +24,15 @@ const fetchShops = async (keyword, code) => {
   return await res.json();
 };
 
-const Shops = ({ firstViewShops }) => {
+const fetchGenres = async () => {
+  const { API_HOST } = getConfig().publicRuntimeConfig;
+
+  const host = process.browser ? '' : API_HOST;
+  const res = await fetch(`${host}/api/genres`);
+  return await res.json();
+};
+
+const Shops = ({ firstViewShops, genres }) => {
   const [keyword, setKeyword] = React.useState('');
   const [shops, setShops] = React.useState([]);
 
@@ -118,10 +126,12 @@ const Shops = ({ firstViewShops }) => {
 
 export const getServerSideProps = async (req) => {
   const shops = await fetchShops(req.query.keyword, req.query.code);
+  const genres = await fetchGenres();
 
   return {
     props: {
       firstViewShops: shops,
+      genres,
     },
   };
 };
