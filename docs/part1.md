@@ -528,6 +528,8 @@ module.exports = {
 };
 ```
 
+また、環境変数の読み込みに再起動が必要です。
+
 ### ラッパーAPI作成
 
 #### ラッパーAPIを作る理由
@@ -536,7 +538,7 @@ module.exports = {
 
 その場合、コード上やdev toolのnetworkタブなどで利用者がAPIキーを見つけ、不正に利用されてしまいます。
 
-そういうリクエストが必要な場合は、サーバー側でリクエストし、ブラウザに漏れないように実装する必要があります。
+サーバー側でリクエストし、ブラウザに漏れないように実装する必要があります。
 
 #### pages/api/shops.js を作成
 
@@ -570,7 +572,7 @@ export default shops;
 
 グルメサーチAPIの仕様に従って、APIキーやフォーマット、エリアを指定、また、キーワードを任意で設定できるようにしています。
 
-実際にリクエストして確認してみましょう。読み込みに再起動が必要です。
+実際にリクエストして確認してみましょう。
 
 - http://localhost:3000/api/shops
 - http://localhost:3000/api/shops?large_area=Z098
@@ -812,6 +814,8 @@ const Shops = ({ shops }) => {
 
 今まではSSRで表示を変えていましたが、検索フォームで検索を押した際に動的にリストが更新されるように修正してみましょう。
 
+まずは、動的にリストを変更できるようにするため、shopsを状態管理します。
+
 https://github.com/arakawamoriyuki/nextjs-handson/commit/aacbc4159febbb2b4581b531f131715825a56846
 
 `pages/part1/gourmets.js`
@@ -853,7 +857,7 @@ useEffectはコンポーネントのマウント/アンマウントやpropsが�
 
 ### CSRでデータ取得
 
-shopsを状態として管理できるようになったのでCSRでCSRでデータ取得し、反映させてみましょう。
+shopsを状態として管理できるようになったのでCSRでデータ取得し、反映させてみましょう。
 
 https://github.com/arakawamoriyuki/nextjs-handson/commit/76d49a7fe2436fbd9645c4d824baed5fa039666a
 

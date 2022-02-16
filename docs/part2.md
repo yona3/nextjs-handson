@@ -1,4 +1,4 @@
-# 第2回 Next Frontend
+# 第2回 Next.js handson
 
 ## 概要
 
@@ -324,7 +324,7 @@ export default genre;
 
 `api/genres/1` のようにアクセスでき、 `req.query.id` で取り出すことができます。
 
-データ追加後、一覧APIで値が帰ってきているか確認しましょう。
+詳細APIで値が帰ってきているか確認しましょう。
 
 ```sh
 $ curl http://localhost:3000/api/genres/1
