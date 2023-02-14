@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  qabot-db:
-    image: mysql:8.0.28
+  db:
+    image: mysql:8.0.31
     environment:
       MYSQL_DATABASE: nextjs-handson
       MYSQL_ROOT_PASSWORD: pass
