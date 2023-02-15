@@ -26,6 +26,8 @@ Next.jsを利用した、オリジナルのグルメ検索サービス開発を�
 
 [ハンズオンリポジトリ](https://github.com/arakawamoriyuki/nextjs-handson)にアクセスし、フォークします。
 
+フォークする際 `Copy the main branch only` のチェックを外してフォークしてください。
+
 ![](./part1-fork.png)
 
 フォーク後、以下コマンドで作成した自分のリポジトリをクローンし、ハンズオン開始準備をしてください。(mainブランチをセットアップ状態に戻し、pushします)
