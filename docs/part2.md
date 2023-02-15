@@ -299,11 +299,11 @@ $ curl --request POST \
 }'
 ```
 
-データ追加後、一覧APIで値が帰ってきているか確認しましょう。
+リクエスト実行後、データが作成されているか確認しましょう。
 
 ```sh
 $ curl http://localhost:3000/api/genres
-[{"id":1,"code":"G001","name":"居酒屋"}]
+[{"id":1,"code":"G001","name":"居酒屋"},{"id":2,"code":"G002","name":"ダイニングバー・バル"}]
 ```
 
 ### 詳細 GET /api/genres/:id
@@ -412,6 +412,11 @@ curl --request PATCH \
 ```
 
 データが変わっているか確認しましょう。
+
+```sh
+$ curl http://localhost:3000/api/genres/1
+{"id":1,"code":"G001","name":"居酒屋!!!!"}
+```
 
 #### PUTとPATCHの違い
 
