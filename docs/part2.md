@@ -15,17 +15,42 @@ Next.jsを利用した、オリジナルのグルメ検索サービス開発を�
 
 ## セットアップ
 
-part1実施済みの方は差分をcherry-pickで適用、part2から参加の方はpart2-1setupブランチから始めてください。
+part1実施済みの方は以下手順を実行、part2から参加の方はpart2-1setupブランチから始めてください。
 
+DB操作に利用するOR/Mapper prismaのインストール
+
+```sh
+$ yarn add prisma@3.8.1
+$ yarn add -D @prisma/client@3.8.1
 ```
-$ git cherry-pick a4f3705178b4f9799ed5658c3587f523f086d85b..fc736560cb26b8a40162d322c80aa1f35b8e79a0
+
+prisma initの実行。prisma設定ファイル(prisma/schema.prisma)が生成されているか確認
+
+```sh
+$ yarn prisma init --datasource-provider mysql
 ```
 
-上記cherry-pickには今回使用するDBの設定や依存パッケージの指定が含まれています。
+開発用ローカルDBを定義した `docker-compose.yml` を作成
 
-- package.jsonの変更
-- prisma/*
-- mysqlコンテナのdocker-compose.yml
+```yml
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0.31
+    environment:
+      MYSQL_DATABASE: nextjs-handson
+      MYSQL_ROOT_PASSWORD: pass
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command: mysqld --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql-data:
+    driver: local
+```
 
 作業後、以下を実行してパッケージインストールと開発環境を立ち上げて確認してください。
 
